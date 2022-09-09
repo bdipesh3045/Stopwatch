@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <style>
+        span{
+            font-size: 100px;
+            color: black;
+
+        }
+        body{
+            background-color: blanchedalmond;
+        }
+        #main{
+            margin-left: 396px;
+            border: black 5px solid;
+            margin-right: 390px;
+            background-color: #bab8b9 ;
+            border-radius: 200px;
+        }
+        .low{
+            font-size: 65px;
+        }
+        #b{
+            margin-left: 40px;
+        }
+        #d{
+            margin-left: 38px;
+        }
+        #c{
+            margin-left: 27px;
+        }
+        button{
+            font-size: larger;
+            border-radius: 200px;
+        }
+        .c{
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <Center>
+        <h1>Counter</h1>
+    </Center>
+   
+    <div id="main">
+    <span class="c" id="hrs">00:</span>
+    <span class="c" id="min">00:</span>
+    <span class="c" id="sec">00:</span>
+    <span class="c" id="mil">00</span>
+    <br>
+    <span id="a" class="low">Hrs</span>
+    <span id="b" class="low">Min</span>
+    <span class="low" id="d">Sec</span>
+    <span id="c" class="low">Milli</span>
+    </div>
+    <br>
+    <center><button  onclick="tart()" >Start</button>
+        <button onclick="stop()">Stop</button>
+        <button onclick="reset()">Reset</button></center>
+    <script>         
+        var hrs=0,min=0,sec=0,mil=0;
+        start=false;
+        function tart()
+        {
+            start=true;
+            timer();
+        }
+        function stop()
+        {
+            start=false;
+            timer();
+        }
+        function reset()
+        {
+            start=false;
+            document.getElementById("hrs").innerHTML="00:";
+            document.getElementById("min").innerHTML="00:";
+            document.getElementById("sec").innerHTML="00:";
+            document.getElementById("mil").innerHTML="00";
+            
+            timer();
+        }
+        function timer()
+        {
+            if(start==true)
+            {
+                mil+=1;
+                
+                if(mil==100)
+                {
+                    mil=0;
+                    sec++;
+                    
+                }
+                if(sec==60)
+                {
+                    min++;
+                    sec=0;
+                }
+                
+                if(min==60)
+                {
+                    hrs++;
+                    min=0
+                }
+                if(mil<10)
+                {
+                    document.getElementById("mil").innerHTML="0"+mil ;
+                }
+                else{
+                    document.getElementById("mil").innerHTML=mil;
+                }
+                if(sec<10)
+                {
+                    document.getElementById("sec").innerHTML="0"+sec +":";
+                }
+                else{
+                    document.getElementById("sec").innerHTML=sec +":";
+                }
+                if(min<10)
+                {
+                    document.getElementById("min").innerHTML="0"+min +":";
+                }
+                else{
+                    document.getElementById("min").innerHTML=min +":";
+                }
+                if(hrs<10)
+                {
+                    document.getElementById("hrs").innerHTML="0"+hrs+":";
+                }
+                else{
+                    document.getElementById("mil").innerHTML=hrs +":";
+                }
+                setTimeout("timer()",10);
+            }
+
+        
+        }
+        function ok()
+
+        {
+
+            let r,g,b;
+
+            r=Math.floor(Math.random() * 200) + 55;
+
+            g=Math.floor(Math.random() * 200) + 55;
+
+            b=Math.floor(Math.random() * 200) + 55;
+
+            document.getElementById("main").style.backgroundColor ="rgb("+r+","+g+","+b+")";
+
+        }
+        setInterval(ok,1000);
+
+    </script>
+</body>
+</html>
